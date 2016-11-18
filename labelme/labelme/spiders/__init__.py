@@ -20,7 +20,6 @@ class AnnotationSpider(scrapy.Spider):
             yield {
                 'filename': file_name,
                 'folder': response.meta['folder'],
-                # 'file_path': file_path
                 'file_urls': [file_path]
             }
 
@@ -41,7 +40,15 @@ class ImageSpider(scrapy.Spider):
     start_urls = [IMG_URL]
 
     def parse_image(self, response):
-        pass
+        file_names = response.css('tr td:nth-child(2) a::attr(href)')
+        for f in file_names:
+            file_name = f.extract()
+            file_path = response.urljoin(file_name)
+            yield {
+                'filename': file_name,
+                'folder': response.meta['folder'],
+                'image_urls': [file_path]
+            }
 
     def parse(self, response):
         urls = response.css('tr td:nth-child(2) a::attr(href)')
