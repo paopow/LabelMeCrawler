@@ -65,8 +65,8 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'labelme.pipelines.files.FilesPipeline': 1,
-   'labelme.pipelines.images.ImagesPipeline': 1
+   'scrapy.pipelines.files.FilesPipeline': 1,
+   'scrapy.pipelines.images.ImagesPipeline': 1
 }
 
 FILES_STORE = 'annotations'

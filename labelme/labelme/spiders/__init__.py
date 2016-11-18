@@ -16,7 +16,13 @@ class AnnotationSpider(scrapy.Spider):
         file_names = response.css('tr td:nth-child(2) a::attr(href)')
         for f in file_names:
             file_name = f.extract()
-
+            file_path = response.urljoin(file_name)
+            yield {
+                'filename': file_name,
+                'folder': response.meta['folder'],
+                # 'file_path': file_path
+                'file_urls': [file_path]
+            }
 
     def parse(self, response):
         urls = response.css('tr td:nth-child(2) a::attr(href)')
@@ -25,7 +31,9 @@ class AnnotationSpider(scrapy.Spider):
 
             if ROOT_PATH not in url:
                 next_page = response.urljoin(url)
-                yield scrapy.response(next_page, callback=self.response)
+                request = scrapy.Request(next_page, callback=self.parse_annotation)
+                request.meta['folder'] = url
+                yield request
 
 
 class ImageSpider(scrapy.Spider):
@@ -36,4 +44,12 @@ class ImageSpider(scrapy.Spider):
         pass
 
     def parse(self, response):
-        pass
+        urls = response.css('tr td:nth-child(2) a::attr(href)')
+        for u in urls:
+            url = u.extract()
+
+            if ROOT_PATH not in url:
+                next_page = response.urljoin(url)
+                request = scrapy.Request(next_page, callback=self.parse_image)
+                request.meta['folder'] = url
+                yield request
