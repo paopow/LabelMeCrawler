@@ -3,8 +3,6 @@ Last update: 17 November 2016
 
 A crawler to download images and annotations from LabelMe.
 
-Note:
-The format of original LabelMe pages might change and affect the output of this code.
 
 ## Running the crawlers
 1. Install required packages
@@ -19,5 +17,21 @@ The format of original LabelMe pages might change and affect the output of this 
     ```
     scrapy crawl images -o images.json
     ```
+## Output
+1. ```annotations.json``` lists all downloaded files. The filename on LabelMe is
+in the 'filename' field and the corresponding local file path is in 'files'->'path'.
+The field 'folder' states from which folder the original file is from.
+2. Annotation files (.xml) are in ```annotations\```
+3. ```images.json``` lists all downloaded files. The filename on LabelMe is
+in the 'filename' field and the corresponding local file path is in 'images'->'path'.
+The field 'folder' states from which folder the original file is from.
+4. Image files are in ```images\```.
 
-The annotations will be saved to ```annotations\```. The images will be saved to ```images\```
+
+## Note
+- The format of original LabelMe pages might change and affect the output of this code.
+- The crawler only download images of width >= 500px and height >= 500px. To change this setting,
+change the field ```IMAGES_MIN_HEIGHT``` and ```IMAGES_MIN_WIDTH``` in ```labelme\settings.py```.
+
+
+
