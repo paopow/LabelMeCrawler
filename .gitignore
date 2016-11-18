@@ -87,3 +87,12 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# LabelMe results
+labelme/annotations.json
+labelme/annotations/
+labelme/images.json
+labelme/images/
+
+# venv
+labelme_venv/
