@@ -71,6 +71,8 @@ ITEM_PIPELINES = {
 
 FILES_STORE = 'annotations'
 IMAGES_STORE = 'images'
+IMAGES_MIN_HEIGHT = 500
+IMAGES_MIN_WIDTH = 500
 
 
 # Enable and configure the AutoThrottle extension (disabled by default)
