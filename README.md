@@ -1,7 +1,7 @@
 # LabelMe Crawler
 Last update: 17 November 2016
 
-A crawler to download images and annotations from LabelMe.
+A crawler to download images and annotations from [LabelMe](http://labelme.csail.mit.edu/).
 
 
 ## Running the crawlers
