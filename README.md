@@ -6,7 +6,7 @@ A crawler to download images and annotations from LabelMe.
 Note:
 The format of original LabelMe pages might change and affect the output of this code.
 
-## Running the crawler
+## Running the crawlers
 1. Install required packages
     ```
     pip install -r requirements.txt
@@ -20,3 +20,4 @@ The format of original LabelMe pages might change and affect the output of this 
     scrapy crawl images -o images.json
     ```
 
+The annotations will be saved to ```annotations\```. The images will be saved to ```images\```
