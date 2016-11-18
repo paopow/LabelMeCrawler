@@ -6,17 +6,26 @@ import scrapy
 
 ANNOTATION_URL = 'http://people.csail.mit.edu/brussell/research/LabelMe/Annotations/'
 IMG_URL = 'http://people.csail.mit.edu/brussell/research/LabelMe/Images/'
-
+ROOT_PATH = '/brussell/research/LabelMe/'
 
 class AnnotationSpider(scrapy.Spider):
     name = 'annotations'
     start_urls = [ANNOTATION_URL]
 
     def parse_annotation(self, response):
-        pass
+        file_names = response.css('tr td:nth-child(2) a::attr(href)')
+        for f in file_names:
+            file_name = f.extract()
+
 
     def parse(self, response):
-        pass
+        urls = response.css('tr td:nth-child(2) a::attr(href)')
+        for u in urls:
+            url = u.extract()
+
+            if ROOT_PATH not in url:
+                next_page = response.urljoin(url)
+                yield scrapy.response(next_page, callback=self.response)
 
 
 class ImageSpider(scrapy.Spider):
