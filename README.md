@@ -1,5 +1,5 @@
 # LabelMe Crawler
-Last update: 17 November 2016
+Last update: 23 November 2016
 
 A crawler to download images and annotations from [LabelMe](http://labelme.csail.mit.edu/).
 
@@ -27,6 +27,10 @@ in the 'filename' field and the corresponding local file path is in 'images'->'p
 The field 'folder' states from which folder the original file is from.
 4. Image files are in ```images\```.
 
+
+## Post-processing
+To generate a mapping between images and annotations, run ```python cleanup.py```.
+The mapping will be generated and saved as ```images_annotations.json```.
 
 ## Note
 - The format of original LabelMe pages might change and affect the output of this code.
