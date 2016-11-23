@@ -93,6 +93,8 @@ labelme/annotations.json
 labelme/annotations/
 labelme/images.json
 labelme/images/
+labelme/images_annotations.json
+labelme/results/
 
 # venv
 labelme_venv/

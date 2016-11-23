@@ -30,6 +30,8 @@ The field 'folder' states from which folder the original file is from.
 
 ## Post-processing
 To generate a mapping between images and annotations, run ```python cleanup.py```.
+"Valid" annotation files and image files will be copied to ```labelme\results\```
+and renamed to reflect the original files folder structure.
 The mapping will be generated and saved as ```images_annotations.json```.
 
 ## Note
