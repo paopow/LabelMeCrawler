@@ -27,17 +27,16 @@ def get_tuple_id(obj):
 def create_dict(annotations, images):
     results = {}
     for a in annotations:
-        if len(a['files']) > 0 and '.xml' in a['files'][0]['path']:
-            local_file = a['files'][0]['path'].split('/')[1]               
+        if len(a['files']) > 0 and '.xml' in a['files'][0]['path']:             
             results[get_tuple_id(a)] = {
                 'annotation': get_tuple_id(a) + '.xml',
                 'image': None
             }
             shutil.copy2('annotations/' +a['files'][0]['path'], 
-
+                         'results/' + get_tuple_id(a) + '.xml' )
+      
     for i in images:
         if len(i['images']) > 0 and '.jpg' in i['images'][0]['path']:
-            local_file = i['images'][0]['path'].split('/')[1]
             if get_tuple_id(i) in results:
                 results[get_tuple_id(i)]['image'] = get_tuple_id(i) + '.jpg'
             else:
