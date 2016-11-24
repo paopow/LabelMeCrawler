@@ -17,6 +17,7 @@ A crawler to download images and annotations from [LabelMe](http://labelme.csail
     ```
     scrapy crawl images -o images.json
     ```
+
 ## Output
 1. ```annotations.json``` lists all downloaded files. The filename on LabelMe is
 in the 'filename' field and the corresponding local file path is in 'files'->'path'.
